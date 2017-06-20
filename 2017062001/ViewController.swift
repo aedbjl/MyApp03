@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var textInput: UITextField!
     
@@ -17,9 +17,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var textHistory: UITextView!
     
     private var stringAnswer:String?
-    
+    private var counter = 0
     @IBAction func click(_ sender: Any) {
-       let stringInput = textInput.text!
+        counter += 1
+        let stringInput = textInput.text!
         print(stringInput)
         
         
@@ -27,19 +28,55 @@ class ViewController: UIViewController {
         let stringResult = BradAPI.checkAB(answer: stringAnswer!, guess: stringInput)
         labelResult.text = stringResult
         textHistory.text.append("\(stringInput)=> \(stringResult)\n")
+        textInput.text = ""
+        if stringResult == "3A0B"{
+            showWinnerDialog()
+        }else if counter == 10 {
+            showLoserDialog()
+        }
+        textInput.resignFirstResponder()
         
     }
     
+    func showWinnerDialog(){
+        let alert:UIAlertController = UIAlertController(title: "Game Result", message: "Congratulatons", preferredStyle: UIAlertControllerStyle.alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: {
+            (action:UIAlertAction) -> Void in
+            self.initRound()
+        })
+        
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    func showLoserDialog(){
+        let alert:UIAlertController = UIAlertController(title: "Game Result", message: "What a shame\n The Answer is:\(stringAnswer!)", preferredStyle: UIAlertControllerStyle.alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: {
+            (action:UIAlertAction)-> Void in
+            self.initRound()
+        })
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil )
+    }
     
+    private func initRound(){
+        textInput.text = ""
+        labelResult.text = "Show Result"
+        textHistory.text = ""
+        stringAnswer = BradAPI.createAnswer(3)
+        counter = 0
+        textInput.resignFirstResponder()
+    }
     
-    
-    
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        click(self)
+        return true
+    }
+    // called when 'return' key pressed. return NO to ignore.
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        stringAnswer = BradAPI.createAnswer()
+        textInput.delegate = self
+        stringAnswer = BradAPI.createAnswer(3)
 //        print(stringAnswer!)
     }
 
