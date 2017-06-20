@@ -1,14 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="_017062001" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +22,65 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入數字" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="jUK-UC-h4o">
+                                <rect key="frame" x="24" y="28" width="262.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xKA-QU-cop">
+                                <rect key="frame" x="294.5" y="28" width="56.5" height="30"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="猜">
+                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qlR-hS-1f4"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelResult" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dnh-jQ-ALj">
+                                <rect key="frame" x="24" y="66" width="327" height="29"/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ow3-Ng-wha">
+                                <rect key="frame" x="24" y="103" width="327" height="556"/>
+                                <color key="backgroundColor" red="0.80000001190000003" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="ow3-Ng-wha" secondAttribute="trailing" constant="8" id="2Hm-o7-AQe"/>
+                            <constraint firstItem="ow3-Ng-wha" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="8Jo-9L-ZdU"/>
+                            <constraint firstItem="Dnh-jQ-ALj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="DXJ-ex-nv5"/>
+                            <constraint firstItem="ow3-Ng-wha" firstAttribute="top" secondItem="Dnh-jQ-ALj" secondAttribute="bottom" constant="8" id="I9l-Bn-scr"/>
+                            <constraint firstItem="xKA-QU-cop" firstAttribute="leading" secondItem="jUK-UC-h4o" secondAttribute="trailing" constant="8" id="JGM-ck-vqG"/>
+                            <constraint firstItem="jUK-UC-h4o" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="PqV-di-8jA"/>
+                            <constraint firstItem="xKA-QU-cop" firstAttribute="top" secondItem="jUK-UC-h4o" secondAttribute="top" id="QfO-9s-c8M"/>
+                            <constraint firstItem="jUK-UC-h4o" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.7" id="Y60-37-WcZ"/>
+                            <constraint firstItem="Dnh-jQ-ALj" firstAttribute="top" secondItem="jUK-UC-h4o" secondAttribute="bottom" constant="8" id="cww-qq-iu4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xKA-QU-cop" secondAttribute="trailing" constant="8" id="gQM-jR-0fN"/>
+                            <constraint firstItem="jUK-UC-h4o" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="gXr-QI-aZU"/>
+                            <constraint firstItem="xKA-QU-cop" firstAttribute="bottom" secondItem="jUK-UC-h4o" secondAttribute="bottom" id="nOg-ls-Jnd"/>
+                            <constraint firstItem="xKA-QU-cop" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="ngg-kw-cIY"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ow3-Ng-wha" secondAttribute="bottom" constant="8" id="vee-kZ-lph"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Dnh-jQ-ALj" secondAttribute="trailing" constant="8" id="xDi-4h-536"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="labelResult" destination="Dnh-jQ-ALj" id="vZ3-GC-Pzp"/>
+                        <outlet property="textHistory" destination="ow3-Ng-wha" id="P0O-9f-SbT"/>
+                        <outlet property="textInput" destination="jUK-UC-h4o" id="kAv-VD-G9m"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>
